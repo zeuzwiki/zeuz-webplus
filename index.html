@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZEUZ Cotillón • Fuegos Artificiales • Pet Friendly</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0015;
+      color: #f0e8ff;
+    }
+    header {
+      background: linear-gradient(to bottom, #180033, #00040f);
+      padding: 25px 5% 35px;
+      text-align: center;
+      border-bottom: 5px solid #ff6b00;
+      position: relative;
+    }
+    .logo-container {
+      max-width: 450px;
+      margin: 0 auto 15px;
+    }
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(255,100,0,0.4);
+    }
+    h1 {
+      font-size: 3.5rem;
+      color: #ffdd00;
+      text-shadow: 0 0 20px #ff8800;
+      margin: 10px 0 5px;
+    }
+    .subtitle {
+      font-size: 1.4rem;
+      color: #ffcc66;
+    }
+    .advertencia {
+      background: rgba(255,30,30,0.25);
+      border: 2px solid #ff4040;
+      color: #ffdddd;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 900px;
+      margin: 15px auto;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .catalogo-nav {
+      background: rgba(0,0,0,0.7);
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      border-bottom: 3px solid #ff8800;
+    }
+    .catalogo-nav a {
+      color: #ffdd00;
+      text-decoration: none;
+      font-size: 1.3rem;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .catalogo-nav a:hover {
+      color: #ff7700;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h2 {
+      text-align: center;
+      color: #ffaa00;
+      font-size: 2.6rem;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px #ff8800;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(40,20,70,0.75);
+      border: 2px solid #ff8800;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 8px 25px rgba(255,140,0,0.25);
+      text-align: center;
+    }
+    .card-img {
+      width: 100%;
+      height: auto;
+      max-height: 220px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background: #111;
+    }
+    .card h3 {
+      color: #ffdd00;
+      font-size: 1.5rem;
+      margin: 8px 0 5px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #ffcc66;
+      margin-bottom: 8px;
+    }
+    .precio {
+      font-size: 1.5rem;
+      color: #00ff99;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+    .btn-comprar {
+      background: #ff0000;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-comprar:hover {
+      background: #cc0000;
+      transform: scale(1.05);
+    }
+    .cart-icon {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      cursor: pointer;
+      z-index: 101;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 14px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    }
+    .cart-icon svg {
+      width: 48px;
+      height: 48px;
+      fill: #ff0000;
+    }
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #ff0000;
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
+    }
+ 
+    /* === NUEVO: Mensaje "Agregado al carrito!" al lado del carrito === */
+    #toast {
+      position: fixed;
+      top: 90px;                   /* justo debajo del ícono del carrito */
+      right: 100px;                /* al lado derecho */
+      background: #00ff99;
+      color: black;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      z-index: 200;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+      box-shadow: 0 4px 15px rgba(0,255,153,0.5);
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 102;
+      justify-content: center;
+      align-items: center;
+    }
+    .cart-content {
+      background: #1a0033;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .close-cart {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2.5rem;
+      color: #ff0000;
+      cursor: pointer;
+    }
+    .cart-item {
+      border-bottom: 1px solid #ff8800;
+      padding: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-item-name {
+      flex: 1;
+    }
+    .cart-item-remove {
+      color: #ff0000;
+      font-size: 1.8rem;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+    .cart-total {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 25px;
+      text-align: right;
+      color: #00ff99;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-pagar {
+      background: #00cc66;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-pagar:hover {
+      background: #00aa55;
+      transform: scale(1.05);
+    }
+    .pago-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 103;
+      justify-content: center;
+      align-items: center;
+    }
+    .pago-content {
+      background: #1a0033;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+    }
+    .close-pago {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2.5rem;
+      color: #ff0000;
+      cursor: pointer;
+    }
+    .pago-content input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ff8800;
+      background: #2a004a;
+      color: white;
+      font-size: 1.1rem;
+    }
+    .btn-enviar-pedido {
+      background: #ff0000;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+    .btn-enviar-pedido:hover {
+      background: #cc0000;
+      transform: scale(1.05);
+    }
+    #info {
+      background: rgba(255, 107, 0, 0.15);
+      border: 2px solid #ff6b00;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 40px auto;
+      max-width: 900px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffdd00;
+    }
+    #info .ig-line {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    #info .ig-icon {
+      width: 32px;
+      height: 32px;
+      fill: #ffdd00;
+    }
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .card-img {
+        max-height: 260px;
+      }
+    }
+    /* === ESTILOS DEL NUEVO MODAL DE CANTIDAD (agregado) === */
+    #cantidadModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 105;
+      justify-content: center;
+      align-items: center;
+    }
+    .cantidad-content {
+      background: #1a0033;
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px solid #ff8800;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255,140,0,0.5);
+    }
+    .cantidad-content h3 {
+      color: #ffdd00;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+    .cantidad-input {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border: 1px solid #ff8800;
+      background: #2a004a;
+      color: white;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+    .cantidad-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .btn-cantidad {
+      padding: 12px 35px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-confirmar {
+      background: #ff0000;
+      color: white;
+    }
+    .btn-cancelar {
+      background: #444;
+      color: #ffdd00;
+    }
+    .btn-cantidad:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <img
+      src="https://i.postimg.cc/dVbwhQVF/content-(42).png"
+      alt="Zeuz Cotillón"
+      class="logo" loading="lazy">
+  </div>
+  <h1>ZEUZ COTILLÓN</h1>
+  <div class="subtitle">Argentina • Pirotecnia Profesional • Pet Friendly • +500 artículos</div>
+  <div class="advertencia">
+    ⚠️ SOLO MAYORES DE 18 • USO RESPONSABLE • CUMPLIMOS NORMATIVA
+  </div>
+  <div class="cart-icon" onclick="toggleCart()">
+    <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.2 5h13.8l-1.8 9H8.4L7.2 5z"/></svg>
+    <span class="cart-badge" id="cart-count">0</span>
+  </div>
+  <!-- Mensaje flotante "Agregado al carrito!" -->
+  <div id="toast">Agregado al carrito!</div>
+</header>
+<!-- Menú de catálogo superior -->
+<div class="catalogo-nav">
+  <a href="#destacados">Destacados</a>
+  <a href="#canas">Cañas</a>
+  <a href="#humos">Humos</a>
+  <a href="#morteros">Morteros</a>
+  <a href="#misiles">Misiles</a>
+  <a href="#petardos">Petardos</a>
+</div>
+<!-- Modal del carrito -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-content">
+    <span class="close-cart" onclick="toggleCart()">×</span>
+    <h2>Tu Carrito</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      <span>Total a pagar: <span id="cartTotal">$0</span></span>
+      <button class="btn-pagar" onclick="abrirPago()">Pagar</button>
+    </div>
+  </div>
+</div>
+<!-- Modal de pago -->
+<div class="pago-modal" id="pagoModal">
+  <div class="pago-content">
+    <span class="close-pago" onclick="cerrarPago()">×</span>
+    <h2>Completá tus datos para el pedido</h2>
+    <form id="formPago">
+      <input type="email" id="clienteEmail" placeholder="Gmail" required>
+      <input type="tel" id="clienteTelefono" placeholder="Número de teléfono" required>
+      <input type="text" id="clienteProvincia" placeholder="Provincia" required>
+      <input type="text" id="clienteLocalidad" placeholder="Localidad" required>
+      <input type="text" id="clienteDireccion" placeholder="Dirección completa" required>
+  
+      <button type="button" class="btn-enviar-pedido" onclick="enviarPedido()">Enviar pedido</button>
+    </form>
+  </div>
+</div>
+<!-- === MODAL NUEVO PARA CANTIDAD (agregado) === -->
+<div id="cantidadModal">
+  <div class="cantidad-content">
+    <h3 id="cantidadTitulo">¿Cuántas unidades querés?</h3>
+    <input type="number" id="cantidadInput" class="cantidad-input" min="1" value="1" required>
+    <div class="cantidad-buttons">
+      <button class="btn-cantidad btn-cancelar" onclick="cancelarCantidad()">Cancelar</button>
+      <button class="btn-cantidad btn-confirmar" onclick="confirmarCantidad()">Confirmar</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <!-- Sección Destacados -->
+  <section id="destacados">
+    <h2>¡Destacados del Mes!</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/N0RSVJ0H/descarga-(1).png" alt="Torta Turbo Júpiter" class="card-img" loading="lazy">
+        <h3>Torta Turbo Júpiter</h3>
+        <div class="precio">$480.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta Turbo Júpiter', 480000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/tT0vNhtj/content.png" alt="36 tiros Crossette" class="card-img" loading="lazy">
+        <h3>36 Tiros Crossette</h3>
+        <p>Showy Celebration</p>
+        <div class="precio">$52.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('36 Tiros Crossette', 52000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/8zcT2S8B/descarga.png" alt="Torta Ultra Laser Júpiter" class="card-img" loading="lazy">
+        <h3>Torta Ultra Laser Júpiter</h3>
+        <div class="precio">$480.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta Ultra Laser Júpiter', 480000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/WzdnRznL/content-(2).png" alt="Humos colores varios" class="card-img" loading="lazy">
+        <h3>Humos Colores Varios</h3>
+        <div class="precio">$11.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Humos Colores Varios', 11000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Vs9M6jSQ/content-(3).png" alt="M 11 Varalda" class="card-img" loading="lazy">
+        <h3>M 11 Varalda (6 bombas)</h3>
+        <div class="precio">$24.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('M 11 Varalda (6 bombas)', 24000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/vB0sqqP0/content-(4).png" alt="T.N.T Dinamita" class="card-img" loading="lazy">
+        <h3>T.N.T Dinamita</h3>
+        <p>Pack x 4 Unidades</p>
+        <div class="precio">$8.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('T.N.T Dinamita', 8000)">Comprar</button>
+      </div>
+    </div>
+  </section>
+  <!-- Apartado Cañas -->
+  <section id="canas">
+    <h2>Cañas</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/wvCSbCXr/content-(5).png" alt="Maxicaña Celebration" class="card-img" loading="lazy">
+        <h3>Maxicaña Celebration</h3>
+        <p>Pack x 4 Unidades</p>
+        <div class="precio">$26.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Maxicaña Celebration', 26500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/BZhFHJC1/content-(6).png" alt="Caña Tiger" class="card-img" loading="lazy">
+        <h3>Caña Tiger</h3>
+        <p>Pack x 6 Unidades</p>
+        <div class="precio">$22.900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Caña Tiger', 22900)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/R0s3fR79/content-(7).png" alt="Mega Efectos" class="card-img" loading="lazy">
+        <h3>Mega Efectos</h3>
+        <p>Pack x 4 Unidades</p>
+        <div class="precio">$13.900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mega Efectos', 13900)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/t4myNmMk/content-(8).png" alt="Zeppelin" class="card-img" loading="lazy">
+        <h3>Zeppelin</h3>
+        <p>Pack x 5 Unidades</p>
+        <div class="precio">$40.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Zeppelin', 40000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/sxf083Bh/content-(9).png" alt="Luces 3 Efectos" class="card-img" loading="lazy">
+        <h3>Luces 3 Efectos</h3>
+        <p>Pack x 6 Unidades</p>
+        <div class="precio">$22.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Luces 3 Efectos', 22000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/43bPTrR7/content-(10).png" alt="Caña con silvido y tiro" class="card-img" loading="lazy">
+        <h3>Caña con silvido y tiro</h3>
+        <p>Pack 12x12 docenas</p>
+        <div class="precio">$22.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Caña con silvido y tiro', 22500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/htRVPprx/content-(11).png" alt="Caña Silvadora" class="card-img" loading="lazy">
+        <h3>Caña Silvadora</h3>
+        <p>Pack x 6 docenas</p>
+        <div class="precio">$11.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Caña Silvadora', 11500)">Comprar</button>
+      </div>
+    </div>
+  </section>
+  <!-- Apartado Humos -->
+  <section id="humos">
+    <h2>Humos</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/yNtZtjkb/content-(12).png" alt="Bengala Mano Fuegolandia" class="card-img" loading="lazy">
+        <h3>Bengala Mano Fuegolandia</h3>
+        <p>Unidad: $3.500 | Pack x 5: $14.000</p>
+        <div class="precio">$3.500 / $14.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bengala Mano Fuegolandia', 3500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/yxdCRmTz/content-(13).png" alt="Pote de humo" class="card-img" loading="lazy">
+        <h3>Pote de humo</h3>
+        <div class="precio">$11.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Pote de humo', 11000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/TYKXYcwP/content-(14).png" alt="Pote humo POW" class="card-img" loading="lazy">
+        <h3>Pote humo POW</h3>
+        <div class="precio">$7.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Pote humo POW', 7500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/mDkmN8K9/content-(15).png" alt="Torta de humo 25 tiros" class="card-img" loading="lazy">
+        <h3>Torta de humo 25 tiros</h3>
+        <div class="precio">$70.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta de humo 25 tiros', 70000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/qvLf1DZk/content-(16).png" alt="Fuente fría" class="card-img" loading="lazy">
+        <h3>Fuente fría</h3>
+        <p>2 mts - 30" duración</p>
+        <div class="precio">$5.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Fuente fría', 5000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/YCS8wXqz/content-(17).png" alt="Cascada fría" class="card-img" loading="lazy">
+        <h3>Cascada fría</h3>
+        <p>1" duración</p>
+        <div class="precio">$29.900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Cascada fría', 29900)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/HskbJrDy/content-(18).png" alt="Bengala mano Punta Austral" class="card-img" loading="lazy">
+        <h3>Bengala mano Punta Austral</h3>
+        <div class="precio">$4.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bengala mano Punta Austral', 4000)">Comprar</button>
+      </div>
+    </div>
+  </section>
+  <!-- Apartado Morteros -->
+  <section id="morteros">
+    <h2>Morteros</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/hGXBhbM8/content-(19).png" alt="Varalda M 11" class="card-img" loading="lazy">
+        <h3>Varalda M 11</h3>
+        <p>x 6 bombas</p>
+        <div class="precio">$24.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Varalda M 11', 24000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/zvjMxV03/content-(20).png" alt="Super Cañón 12+1" class="card-img" loading="lazy">
+        <h3>Super Cañón 12+1</h3>
+        <p>x 4 unidades</p>
+        <div class="precio">$36.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Super Cañón 12+1', 36000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/c1mbytBJ/content-(21).png" alt="12 tiros con bomba Akil" class="card-img" loading="lazy">
+        <h3>12 tiros con bomba Akil</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$16.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('12 tiros con bomba Akil', 16000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/90KT5B8W/content-(22).png" alt="Shell bomba 1 1/2 color" class="card-img" loading="lazy">
+        <h3>Shell bomba 1 1/2 color</h3>
+        <p>6 bombas</p>
+        <div class="precio">$23.700</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Shell bomba 1 1/2 color', 23700)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/j5CLx7JV/content-(23).png" alt="Shell bomba 1 1/2" class="card-img" loading="lazy">
+        <h3>Shell bomba 1 1/2</h3>
+        <p>6 bombas</p>
+        <div class="precio">$27.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Shell bomba 1 1/2', 27500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/NFH7dMYN/content-(24).png" alt="Coquetona color" class="card-img" loading="lazy">
+        <h3>Coquetona color</h3>
+        <p>6 bombas</p>
+        <div class="precio">$24.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Coquetona color', 24000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/1Xwwpjcj/content-(25).png" alt="Super Cañón 13" class="card-img" loading="lazy">
+        <h3>Super Cañón 13</h3>
+        <p>x 2 unidades</p>
+        <div class="precio">$18.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Super Cañón 13', 18000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/P53yf062/content-(26).png" alt="Morterito crackling" class="card-img" loading="lazy">
+        <h3>Morterito crackling</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$11.200</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Morterito crackling', 11200)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/DwHGMhj5/content-(27).png" alt="Morteritos estruendo" class="card-img" loading="lazy">
+        <h3>Morteritos estruendo</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$8.200</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Morteritos estruendo', 8200)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Sx2285SJ/content-(28).png" alt="Color resplandor" class="card-img" loading="lazy">
+        <h3>Color resplandor</h3>
+        <div class="precio">$3.700</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Color resplandor', 3700)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/W3219fv0/content-(29).png" alt="Alta gama color" class="card-img" loading="lazy">
+        <h3>Alta gama color</h3>
+        <div class="precio">$4.700</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Alta gama color', 4700)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/SQ1xrrt8/content-(30).png" alt="Torta 70 tiros" class="card-img" loading="lazy">
+        <h3>Torta 70 tiros</h3>
+        <div class="precio">$7.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta 70 tiros', 7000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/YqwLg84R/content-(31).png" alt="Mortero 100 luces" class="card-img" loading="lazy">
+        <h3>Mortero 100 luces</h3>
+        <div class="precio">$7.800</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mortero 100 luces', 7800)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/J414MFHB/content-(33).png" alt="Mortero 10 bombas" class="card-img" loading="lazy">
+        <h3>Mortero 10 bombas</h3>
+        <div class="precio">$11.800</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mortero 10 bombas', 11800)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/SsqHCBhX/content-(34).png" alt="Cañon color 2.5" class="card-img" loading="lazy">
+        <h3>Cañon color 2.5</h3>
+        <div class="precio">$18.900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Cañon color 2.5', 18900)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/02LW7TGR/content-(35).png" alt="Jupiter shell triple" class="card-img" loading="lazy">
+        <h3>Jupiter shell triple</h3>
+        <div class="precio">$65.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Jupiter shell triple', 65000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/K8x99nWr/content-(36).png" alt="Cañonazo 2" class="card-img" loading="lazy">
+        <h3>Cañonazo 2</h3>
+        <div class="precio">$14.800</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Cañonazo 2', 14800)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/L4y64Tt1/content-(38).png" alt="Conjunto de akil" class="card-img" loading="lazy">
+        <h3>Conjunto de akil</h3>
+        <p>12 bombas</p>
+        <div class="precio">$34.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Conjunto de akil', 34000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/pLv2q6x4/content-(39).png" alt="T1" class="card-img" loading="lazy">
+        <h3>T1</h3>
+        <div class="precio">$4.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('T1', 4500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/HLh1DZDH/content-(40).png" alt="T2" class="card-img" loading="lazy">
+        <h3>T2</h3>
+        <div class="precio">$11.800</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('T2', 11800)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Y9WZctz8/content-(41).png" alt="Cañonazo 1" class="card-img" loading="lazy">
+        <h3>Cañonazo 1</h3>
+        <div class="precio">$13.700</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Cañonazo 1', 13700)">Comprar</button>
+      </div>
+    </div>
+  </section>
+  <!-- === NUEVA SECCIÓN: MISILES === -->
+  <section id="misiles">
+    <h2>Misiles</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/rF2z4Gyw/content.png" alt="16 salidas x4 u fuegolandia" class="card-img" loading="lazy">
+        <h3>16 salidas x4 u Fuegolandia</h3>
+        <div class="precio">$7.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('16 salidas x4 u Fuegolandia', 7500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/fTvW06gG/content-(1).png" alt="25 salidas fuegolandia x4" class="card-img" loading="lazy">
+        <h3>25 salidas Fuegolandia x4</h3>
+        <div class="precio">$6.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('25 salidas Fuegolandia x4', 6000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/m2VRr7tv/content-(2).png" alt="50 salidas jupiter" class="card-img" loading="lazy">
+        <h3>50 salidas Júpiter</h3>
+        <div class="precio">$6.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('50 salidas Júpiter', 6000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/5NPdJ1Rk/content-(3).png" alt="100 salidas fuegolandia" class="card-img" loading="lazy">
+        <h3>100 salidas Fuegolandia</h3>
+        <div class="precio">$10.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('100 salidas Fuegolandia', 10000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/85d90Vvt/content-(4).png" alt="250 salidas akil" class="card-img" loading="lazy">
+        <h3>250 salidas Akil</h3>
+        <div class="precio">$24.900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('250 salidas Akil', 24900)">Comprar</button>
+      </div>
+    </div>
+  </section>
+  <!-- === SECCIÓN PETARDOS (actualizada con los nuevos productos) === -->
+  <section id="petardos">
+    <h2>Petardos</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/BZKdjkvb/content-(5).png" alt="Tornado" class="card-img" loading="lazy">
+        <h3>Tornado</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$7.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Tornado', 7500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/FKz6Nn6p/content-(10).png" alt="El Chacal" class="card-img" loading="lazy">
+        <h3>El Chacal</h3>
+        <p>x 50 unidades</p>
+        <div class="precio">$9.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('El Chacal', 9000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/6QqPt1P0/content-(6).png" alt="Petardo Silver" class="card-img" loading="lazy">
+        <h3>Petardo Silver</h3>
+        <p>x 3 unidades</p>
+        <div class="precio">$7.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Petardo Silver', 7000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Jh0FMdFp/content-(7).png" alt="Tumba Rancho" class="card-img" loading="lazy">
+        <h3>Tumba Rancho</h3>
+        <p>x 5 unidades o 36000 x 10 x 5 unidades</p>
+        <div class="precio">$5.900 / $36.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Tumba Rancho', 5900)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/P52cGkSF/content-(8).png" alt="Dale Gimnasia" class="card-img" loading="lazy">
+        <h3>Dale Gimnasia</h3>
+        <p>x 5 unidades</p>
+        <div class="precio">$5.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Dale Gimnasia', 5000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/43y0sF0w/content-(9).png" alt="Terremoto" class="card-img" loading="lazy">
+        <h3>Terremoto</h3>
+        <p>x 5 unidades</p>
+        <div class="precio">$3.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Terremoto', 3500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/9F3tfN4j/content-(11).png" alt="Trompo explosivo" class="card-img" loading="lazy">
+        <h3>Trompo explosivo</h3>
+        <div class="precio">$4.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Trompo explosivo', 4000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/qMfX7ZtM/content-(12).png" alt="Pit Bull" class="card-img" loading="lazy">
+        <h3>Pit Bull</h3>
+        <p>x 5 unidades</p>
+        <div class="precio">$4.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Pit Bull', 4000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/bNXHvFZm/content-(13).png" alt="Nitro T.N.T" class="card-img" loading="lazy">
+        <h3>Nitro T.N.T</h3>
+        <p>x 4 unidades</p>
+        <div class="precio">$3.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Nitro T.N.T', 3500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/QxLkMnBG/content-(14).png" alt="Pum Ball" class="card-img" loading="lazy">
+        <h3>Pum Ball</h3>
+        <p>x 4 unidades $1.000 | 25 x 4 unidades $22.000</p>
+        <div class="precio">$1.000 / $22.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Pum Ball', 1000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/RVrQ0b3B/content-(15).png" alt="Super Petardon T.N.T" class="card-img" loading="lazy">
+        <h3>Super Petardon T.N.T</h3>
+        <p>x 4 unidades</p>
+        <div class="precio">$8.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Super Petardon T.N.T', 8000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/9F3tfN4V/content-(16).png" alt="3 tiros punta austral" class="card-img" loading="lazy">
+        <h3>3 tiros Punta Austral</h3>
+        <p>x 3 unidades $9.000 | x 12 unidades $22.000</p>
+        <div class="precio">$9.000 / $22.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('3 tiros Punta Austral', 9000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/wMzXw1YR/content-(17).png" alt="Fosforo cohete" class="card-img" loading="lazy">
+        <h3>Fosforo cohete</h3>
+        <p>40 x 6 unidades</p>
+        <div class="precio">$5.800</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Fosforo cohete', 5800)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/L5VzwmmH/content-(18).png" alt="Super fosforito" class="card-img" loading="lazy">
+        <h3>Super fosforito</h3>
+        <p>20 x 20 unidades</p>
+        <div class="precio">$9.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Super fosforito', 9000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/1XKp2yyR/content-(19).png" alt="Volcan keops" class="card-img" loading="lazy">
+        <h3>Volcan keops</h3>
+        <div class="precio">$29.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Volcan keops', 29000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/WzVG5dcp/content-(20).png" alt="Petardo español" class="card-img" loading="lazy">
+        <h3>Petardo español</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$4.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Petardo español', 4000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/NFt6dKvK/content-(21).png" alt="Trueno estopin" class="card-img" loading="lazy">
+        <h3>Trueno estopin</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$12.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Trueno estopin', 12500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/gjpVgxbw/content-(22).png" alt="Aerolito" class="card-img" loading="lazy">
+        <h3>Aerolito</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$17.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Aerolito', 17500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/nc4DdF0N/content-(23).png" alt="Triangulo diabolico" class="card-img" loading="lazy">
+        <h3>Triangulo diabolico</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$3.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Triangulo diabolico', 3000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/wTXmWqw8/content-(24).png" alt="Volcan 4 flash" class="card-img" loading="lazy">
+        <h3>Volcan 4 flash</h3>
+        <p>x 6 unidades</p>
+        <div class="precio">$7.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Volcan 4 flash', 7000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/jdH78xMb/content-(25).png" alt="Volcan fuegolandia" class="card-img" loading="lazy">
+        <h3>Volcan fuegolandia</h3>
+        <p>x 5 unidades</p>
+        <div class="precio">$3.700</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Volcan fuegolandia', 3700)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/HsDM4c9C/content-(26).png" alt="Flower cienfuegos" class="card-img" loading="lazy">
+        <h3>Flower cienfuegos</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$2.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Flower cienfuegos', 2500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/28QZHk0p/content-(27).png" alt="Flower fuegolandia" class="card-img" loading="lazy">
+        <h3>Flower fuegolandia</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$2.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Flower fuegolandia', 2500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Yq6WXrb5/content-(28).png" alt="King kong" class="card-img" loading="lazy">
+        <h3>King kong</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$3.400</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('King kong', 3400)">Comprar</button>
+      </div>
+      <!-- Nuevos productos agregados ahora -->
+      <div class="card">
+        <img src="https://i.postimg.cc/7Lfc1WqC/content-(29).png" alt="Flower x 20 pow" class="card-img" loading="lazy">
+        <h3>Flower x 20 pow</h3>
+        <p>x 20 unidades</p>
+        <div class="precio">$4.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Flower x 20 pow', 4000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/KYRV7Hm3/content-(30).png" alt="Flower x 20 chicos pow" class="card-img" loading="lazy">
+        <h3>Flower x 20 chicos pow</h3>
+        <p>x 20 unidades</p>
+        <div class="precio">$3.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Flower x 20 chicos pow', 3500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/k5BZNp72/content-(31).png" alt="Volcan estruendo" class="card-img" loading="lazy">
+        <h3>Volcan estruendo</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$7.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Volcan estruendo', 7000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/N05V8zQF/content-(32).png" alt="T.N.T dinamita" class="card-img" loading="lazy">
+        <h3>T.N.T dinamita</h3>
+        <p>x 4 unidades</p>
+        <div class="precio">$8.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('T.N.T dinamita', 8000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/7LdRKnLH/content-(33).png" alt="Bombon asesino oferta" class="card-img" loading="lazy">
+        <h3>Bombon asesino oferta</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$9.400</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bombon asesino oferta', 9400)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/tgYfdM9Z/content-(34).png" alt="Bombon asesino" class="card-img" loading="lazy">
+        <h3>Bombon asesino</h3>
+        <p>x 10 unidades</p>
+        <div class="precio">$12.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bombon asesino', 12500)">Comprar</button>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Apartado Información -->
+<section id="info">
+  Solicitar catálogo revendedor/mayorista vía WhatsApp 221-642-4407, compras mayoristas superiores a 200000
+  <div class="ig-line">
+    zeus_cotillon
+    <svg class="ig-icon" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.239 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.239-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.239-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.239 3.608-1.301 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.013 7.052.072c-1.68.058-2.85.36-3.86 1.37C2.432 2.192 2.13 3.362 2.072 5.042.013 6.322 0 6.731 0 10s.013 3.678.072 4.958c.058 1.68.36 2.85 1.37 3.86 1.01 1.01 2.18 1.312 3.86 1.37C8.332 20 8.741 20 12 20s3.668-.013 4.948-.072c1.68-.058 2.85-.36 3.86-1.37 1.01-1.01 1.312-2.18 1.37-3.86.058-1.28.072-1.689.072-4.958s-.013-3.668-.072-4.948c-.058-1.68-.36-2.85-1.37-3.86C18.65.432 17.48.13 15.8.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.846-10.405a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+    </svg>
+  </div>
+</section>
+<footer style="background:#000; padding:30px; text-align:center; color:#777; margin-top:50px;">
+  <p>ZEUS Cotillón • La Plata, Argentina • Pirotecnia responsable</p>
+</footer>
+<script>
+// Variables globales para el modal de cantidad
+let productoActual = '';
+let precioActual = 0;
+// 🔴 BORRAR carrito cada vez que se carga la página
+localStorage.removeItem('cart');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function mostrarModalCantidad(nombre, precio) {
+  productoActual = nombre;
+  precioActual = precio;
+  document.getElementById('cantidadTitulo').textContent = `¿Cuántas unidades de "${nombre}" querés?`;
+  document.getElementById('cantidadInput').value = "1";
+  document.getElementById('cantidadModal').style.display = 'flex';
+}
+function confirmarCantidad() {
+  const input = document.getElementById('cantidadInput');
+  let cantidad = parseInt(input.value);
+ 
+  if (isNaN(cantidad) || cantidad <= 0) {
+    alert("Cantidad no válida. Debe ser un número mayor a 0.");
+    return;
+  }
+  // Agregar al carrito (sin alert)
+  const existing = cart.find(item => item.name === productoActual);
+  if (existing) {
+    existing.quantity = (existing.quantity || 1) + cantidad;
+  } else {
+    cart.push({ name: productoActual, price: precioActual, quantity: cantidad });
+  }
+ 
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+
+  // === NUEVO === Mostrar mensaje "Agregado al carrito!" por 5 segundos
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 5000);
+ 
+  // Cerrar modal directamente (sin mensaje)
+  document.getElementById('cantidadModal').style.display = 'none';
+}
+function cancelarCantidad() {
+  document.getElementById('cantidadModal').style.display = 'none';
+}
+function removeFromCart(name) {
+  cart = cart.filter(item => item.name !== name);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  showCart();
+  updateCartCount();
+}
+function updateCartCount() {
+  let count = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  document.getElementById('cart-count').innerText = count;
+}
+function showCart() {
+  const itemsDiv = document.getElementById('cartItems');
+  itemsDiv.innerHTML = '';
+  let total = 0;
+  let carritoTexto = "";
+  cart.forEach(item => {
+    const qty = item.quantity || 1;
+    const subtotal = item.price * qty;
+    total += subtotal;
+    carritoTexto += `- ${item.name} × ${qty} = $${subtotal.toLocaleString()}\n`;
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <span class="cart-item-name">${item.name} ×${qty} = $${subtotal.toLocaleString()}</span>
+      <span class="cart-item-remove" onclick="removeFromCart('${item.name.replace(/'/g, "\\'")}')">X</span>
+    `;
+    itemsDiv.appendChild(div);
+  });
+  document.getElementById('cartTotal').innerText = `$${total.toLocaleString()}`;
+  return { total, carritoTexto };
+}
+function toggleCart() {
+  const modal = document.getElementById('cartModal');
+  modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+  if (modal.style.display === 'flex') showCart();
+}
+function abrirPago() {
+  document.getElementById('pagoModal').style.display = 'flex';
+}
+function cerrarPago() {
+  document.getElementById('pagoModal').style.display = 'none';
+}
+function enviarPedido() {
+  const email = document.getElementById('clienteEmail').value.trim();
+  const telefono = document.getElementById('clienteTelefono').value.trim();
+  const provincia = document.getElementById('clienteProvincia').value.trim();
+  const localidad = document.getElementById('clienteLocalidad').value.trim();
+  const direccion = document.getElementById('clienteDireccion').value.trim();
+  if (!email || !telefono || !provincia || !localidad || !direccion) {
+    alert('Por favor completá todos los campos');
+    return;
+  }
+  const { total, carritoTexto } = showCart();
+  const mensaje =
+    "*PEDIDO ZEUZ COTILLÓN* 🔥\n\n" +
+    `👤 Cliente: ${email}\n` +
+    `📱 Tel: ${telefono}\n` +
+    `📍 Provincia: ${provincia}\n` +
+    `🏠 Localidad: ${localidad}\n` +
+    `📌 Dirección: ${direccion}\n\n` +
+    "*PRODUCTOS:*\n" +
+    carritoTexto +
+    `\n💰 *TOTAL A PAGAR:* $${total.toLocaleString()}\n\n` +
+    "¡Gracias por elegirnos! 💥\nRespondeme cuando puedas para coordinar.";
+  const numeroWhatsApp = "5492216424407";
+  const urlWhats = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  window.open(urlWhats, '_blank');
+  alert("¡Listo! Se abrió WhatsApp con el pedido completo.\nSolo presioná el botón verde de enviar y nos llega al instante al 221-642-4407.");
+  cerrarPago();
+  toggleCart();
+}
+updateCartCount();
+</script>
+</body>
+</html>
