@@ -171,12 +171,11 @@
       font-weight: bold;
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
     }
- 
     /* === NUEVO: Mensaje "Agregado al carrito!" al lado del carrito === */
     #toast {
       position: fixed;
-      top: 90px;                   /* justo debajo del ícono del carrito */
-      right: 100px;                /* al lado derecho */
+      top: 90px; /* justo debajo del ícono del carrito */
+      right: 100px; /* al lado derecho */
       background: #00ff99;
       color: black;
       padding: 12px 24px;
@@ -194,7 +193,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-
     .cart-modal {
       display: none;
       position: fixed;
@@ -451,6 +449,12 @@
   <a href="#morteros">Morteros</a>
   <a href="#misiles">Misiles</a>
   <a href="#petardos">Petardos</a>
+  <a href="#baterias">Baterías</a>
+  <a href="#bengalas">Bengalas</a>
+  <a href="#candelas">Candelas</a>  
+  <a href="#infantil">Infantil</a>
+  <a href="#tortas">Tortas</a>
+  <a href="#pet-friendly">Pet Friendly</a>
 </div>
 <!-- Modal del carrito -->
 <div class="cart-modal" id="cartModal">
@@ -475,7 +479,7 @@
       <input type="text" id="clienteProvincia" placeholder="Provincia" required>
       <input type="text" id="clienteLocalidad" placeholder="Localidad" required>
       <input type="text" id="clienteDireccion" placeholder="Dirección completa" required>
-  
+ 
       <button type="button" class="btn-enviar-pedido" onclick="enviarPedido()">Enviar pedido</button>
     </form>
   </div>
@@ -820,7 +824,7 @@
       </div>
     </div>
   </section>
-  <!-- === SECCIÓN PETARDOS (actualizada con los nuevos productos) === -->
+  <!-- === SECCIÓN PETARDOS === -->
   <section id="petardos">
     <h2>Petardos</h2>
     <div class="grid">
@@ -990,7 +994,6 @@
         <div class="precio">$3.400</div>
         <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('King kong', 3400)">Comprar</button>
       </div>
-      <!-- Nuevos productos agregados ahora -->
       <div class="card">
         <img src="https://i.postimg.cc/7Lfc1WqC/content-(29).png" alt="Flower x 20 pow" class="card-img" loading="lazy">
         <h3>Flower x 20 pow</h3>
@@ -1035,6 +1038,766 @@
       </div>
     </div>
   </section>
+
+  <!-- NUEVA SECCIÓN: BATERÍAS -->
+  <section id="baterias">
+    <h2>Baterías</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/pXCZKmJW/content-(35).png" alt="bateria 50 tiros" class="card-img" loading="lazy">
+        <h3>bateria 50 tiros</h3>
+        <div class="precio">$2000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bateria 50 tiros', 2000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/m2jw7PyT/content-(36).png" alt="bateria 100 tiros" class="card-img" loading="lazy">
+        <h3>bateria 100 tiros</h3>
+        <div class="precio">$3000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bateria 100 tiros', 3000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Dy6g1SPT/content-(37).png" alt="bateria 300 tiros" class="card-img" loading="lazy">
+        <h3>bateria 300 tiros</h3>
+        <div class="precio">$7900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bateria 300 tiros', 7900)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/Pry41CzF/content-(38).png" alt="bateria interminable 1000 tiros" class="card-img" loading="lazy">
+        <h3>bateria interminable 1000 tiros</h3>
+        <div class="precio">$6500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bateria interminable 1000 tiros', 6500)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/rFjJ5DNp/content-(39).png" alt="uzi cracker" class="card-img" loading="lazy">
+        <h3>uzi cracker</h3>
+        <p>40 x 12</p>
+        <div class="precio">$8000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('uzi cracker', 8000)">Comprar</button>
+      </div>
+      <div class="card">
+        <img src="https://i.postimg.cc/GhKQv4xR/content-(40).png" alt="bateria 15 tiros x 40u" class="card-img" loading="lazy">
+        <h3>bateria 15 tiros x 40u</h3>
+        <div class="precio">$16500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bateria 15 tiros x 40u', 16500)">Comprar</button>
+      </div>
+    </div>
+  </section>
+  <!-- NUEVA SECCIÓN: BENGALAS -->
+  <section id="bengalas">
+    <h2>Bengalas</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.postimg.cc/T3XK20Db/content-(41).png" alt="12 cajas x 5 unidades" class="card-img" loading="lazy">
+        <h3>12 cajas x 5 unidades</h3>
+        <div class="precio">$12.900</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('12 cajas x 5 unidades', 12900)">Comprar</button>
+      </div>
+
+      <div class="card">
+        <img src="https://i.postimg.cc/kgd2MsbB/content-(42).png" alt="bengalita estorbo 12 x 5u" class="card-img" loading="lazy">
+        <h3>bengalita estorbo 12 x 5u</h3>
+        <p>21900 o 2500 x 5 unidades</p>
+        <div class="precio">$21.900 / $2.500</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bengalita estorbo 12 x 5u', 21900)">Comprar</button>
+      </div>
+
+      <div class="card">
+        <img src="https://i.postimg.cc/YCfhvF60/content-(43).png" alt="bengalita 10 x 5" class="card-img" loading="lazy">
+        <h3>bengalita 10 x 5</h3>
+        <p>6000 10x5 unidades</p>
+        <div class="precio">$6.000</div>
+        <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('bengalita 10 x 5', 6000)">Comprar</button>
+      </div>
+    </div>
+  </section> 
+<!-- NUEVA SECCIÓN: candelas -->
+<section id="candelas">
+  <h2>Candela</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.postimg.cc/nV3KzCKm/content-(44).png" alt="5 tiros x 6u" class="card-img" loading="lazy">
+      <h3>5 tiros x 6u</h3>
+      <div class="precio">$4.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('5 tiros x 6u', 4000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/wxw5v75J/content-(45).png" alt="10 tiros x 6u" class="card-img" loading="lazy">
+      <h3>10 tiros x 6u</h3>
+      <div class="precio">$4.750</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('10 tiros x 6u', 4750)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/ryfGmKGt/content-(46).png" alt="20 tiros x 6u" class="card-img" loading="lazy">
+      <h3>20 tiros x 6u</h3>
+      <div class="precio">$6.800</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('20 tiros x 6u', 6800)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/dQ5R1LRh/content-(47).png" alt="candela 30 tiros x 6u" class="card-img" loading="lazy">
+      <h3>candela 30 tiros x 6u</h3>
+      <div class="precio">$7.800</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('candela 30 tiros x 6u', 7800)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/XNsKJpKd/content-(48).png" alt="candela 50 tiros x 6u" class="card-img" loading="lazy">
+      <h3>candela 50 tiros x 6u</h3>
+      <div class="precio">$13.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('candela 50 tiros x 6u', 13000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/wxw5v75m/content-(49).png" alt="candela 80 tiros x 6u" class="card-img" loading="lazy">
+      <h3>candela 80 tiros x 6u</h3>
+      <div class="precio">$16.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('candela 80 tiros x 6u', 16900)">Comprar</button>
+    </div>
+  </div>
+</section> <!-- NUEVA SECCIÓN: INFANTIL -->
+<section id="infantil">
+  <h2>Infantil</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.postimg.cc/hPy1vfB9/content-(50).png" alt="abejitas" class="card-img" loading="lazy">
+      <h3>Abejitas</h3>
+      <p>2500 x 12 unidades</p>
+      <div class="precio">$2.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Abejitas', 2500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/rFnNsKkx/content-(51).png" alt="bengalitas 10x5u" class="card-img" loading="lazy">
+      <h3>Bengalitas 10x5u</h3>
+      <div class="precio">$6.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bengalitas 10x5u', 6000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/9FFBcyvx/content-(52).png" alt="super fosforito 20x20u" class="card-img" loading="lazy">
+      <h3>Super fosforito 20x20u</h3>
+      <div class="precio">$900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Super fosforito 20x20u', 900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/3JJZ32Pn/content-(53).png" alt="fosforo cohete 40 x 6u" class="card-img" loading="lazy">
+      <h3>Fosforo cohete 40 x 6u</h3>
+      <div class="precio">$5.800</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Fosforo cohete 40 x 6u', 5800)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/Wbb7s0Q8/content-(54).png" alt="huevo dragon 24x6u" class="card-img" loading="lazy">
+      <h3>Huevo dragon 24x6u</h3>
+      <p>18500 o 3000 x 3 unidades</p>
+      <div class="precio">$18.500 / $3.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Huevo dragon 24x6u', 18500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/Dyyc71tc/content-(55).png" alt="estallo chasquito 100x10" class="card-img" loading="lazy">
+      <h3>Estallo chasquito 100x10</h3>
+      <div class="precio">$45.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Estallo chasquito 100x10', 45000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/hPP0KVHd/content-(56).png" alt="piedras cracker 24 x 6" class="card-img" loading="lazy">
+      <h3>Piedras cracker 24 x 6</h3>
+      <div class="precio">$18.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Piedras cracker 24 x 6', 18900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/tCCz9FLV/content-(57).png" alt="traka sorpresa" class="card-img" loading="lazy">
+      <h3>Traka sorpresa</h3>
+      <div class="precio">$2.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Traka sorpresa', 2000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/vHHvG5pc/content-(58).png" alt="avion nocturno x 6 u" class="card-img" loading="lazy">
+      <h3>Avion nocturno x 6 u</h3>
+      <div class="precio">$6.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Avion nocturno x 6 u', 6000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/zXXkqT9D/content-(59).png" alt="estallos ruiditos" class="card-img" loading="lazy">
+      <h3>Estallos ruiditos</h3>
+      <p>35000 100 x 10 u</p>
+      <div class="precio">$35.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Estallos ruiditos', 35000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/J44QRj94/content-(60).png" alt="estrellita 10 x 5" class="card-img" loading="lazy">
+      <h3>Estrellita 10 x 5</h3>
+      <div class="precio">$5.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Estrellita 10 x 5', 5000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/ncc1nq6z/content-(61).png" alt="estrellitas 50 x 5 u" class="card-img" loading="lazy">
+      <h3>Estrellitas 50 x 5 u</h3>
+      <div class="precio">$19.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Estrellitas 50 x 5 u', 19900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/L66Vmjr9/content-(62).png" alt="bengalitas 12 x 5 u estrobo" class="card-img" loading="lazy">
+      <h3>Bengalitas 12 x 5 u estrobo</h3>
+      <div class="precio">$21.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bengalitas 12 x 5 u estrobo', 21900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/MZYDk9rX/content-(63).png" alt="bateria interminable 1000 tiros" class="card-img" loading="lazy">
+      <h3>Bateria interminable 1000 tiros</h3>
+      <p>6500 x 4 u</p>
+      <div class="precio">$6.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bateria interminable 1000 tiros', 6500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/7YsnhfkV/content-(64).png" alt="bengalitas 12 x 5 u" class="card-img" loading="lazy">
+      <h3>Bengalitas 12 x 5 u</h3>
+      <div class="precio">$12.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bengalitas 12 x 5 u', 12900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/HsZ9nVg9/content-(65).png" alt="estallo 100 x 10" class="card-img" loading="lazy">
+      <h3>Estallo 100 x 10</h3>
+      <p>no disponible</p>
+      <div class="precio">No disponible</div>
+      <button type="button" class="btn-comprar" disabled>No disponible</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/TY7J1p6j/content-(66).png" alt="estallos 40 x 10 u" class="card-img" loading="lazy">
+      <h3>Estallos 40 x 10 u</h3>
+      <div class="precio">$14.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Estallos 40 x 10 u', 14000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/CLPs5zgG/content-(67).png" alt="bolon explosivo" class="card-img" loading="lazy">
+      <h3>Bolon explosivo</h3>
+      <div class="precio">$2.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Bolon explosivo', 2500)">Comprar</button>
+    </div>
+  </div>
+</section><!-- NUEVA SECCIÓN: TORTAS -->
+<section id="tortas">
+  <h2>Tortas</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.postimg.cc/FsN9PVYh/content-(68).png" alt="19 tiros gemini" class="card-img" loading="lazy">
+      <h3>19 tiros Gemini</h3>
+      <div class="precio">$49.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('19 tiros Gemini', 49500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/jdts84Dt/content-(69).png" alt="19 tiros manhatan" class="card-img" loading="lazy">
+      <h3>19 tiros Manhattan</h3>
+      <div class="precio">$49.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('19 tiros Manhattan', 49500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/c40sDBvW/content-(70).png" alt="19 tiros orion" class="card-img" loading="lazy">
+      <h3>19 tiros Orion</h3>
+      <div class="precio">$49.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('19 tiros Orion', 49500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/NfBgNkKw/content-(71).png" alt="espectaculo 19 tiros" class="card-img" loading="lazy">
+      <h3>Espectáculo 19 tiros</h3>
+      <div class="precio">$49.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Espectáculo 19 tiros', 49500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/rFM8hNDX/content-(72).png" alt="pagoda 19 tiros" class="card-img" loading="lazy">
+      <h3>Pagoda 19 tiros</h3>
+      <div class="precio">$28.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Pagoda 19 tiros', 28500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/15s9WrfL/content-(73).png" alt="hollywood 36 tiros" class="card-img" loading="lazy">
+      <h3>Hollywood 36 tiros</h3>
+      <div class="precio">$79.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Hollywood 36 tiros', 79000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/3JYKLFd6/content-(74).png" alt="tormenta 25 tiros" class="card-img" loading="lazy">
+      <h3>Tormenta 25 tiros</h3>
+      <div class="precio">$57.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Tormenta 25 tiros', 57500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/ZK4TfxCj/content-(75).png" alt="gladiador 35 tiros" class="card-img" loading="lazy">
+      <h3>Gladiador 35 tiros</h3>
+      <div class="precio">$51.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Gladiador 35 tiros', 51000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/7YwxBnfV/content-(76).png" alt="cronos 32 tiros" class="card-img" loading="lazy">
+      <h3>Cronos 32 tiros</h3>
+      <div class="precio">$47.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Cronos 32 tiros', 47000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/qM4kmxzw/content-(77).png" alt="aquiles 16 tiros" class="card-img" loading="lazy">
+      <h3>Aquiles 16 tiros</h3>
+      <div class="precio">$37.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Aquiles 16 tiros', 37000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/Dyn2CP8d/content-(78).png" alt="centauro 16 tiros" class="card-img" loading="lazy">
+      <h3>Centauro 16 tiros</h3>
+      <div class="precio">$37.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Centauro 16 tiros', 37000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/XNwjcz7D/content-(79).png" alt="zonda 16 tiros" class="card-img" loading="lazy">
+      <h3>Zonda 16 tiros</h3>
+      <div class="precio">$44.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Zonda 16 tiros', 44900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/QNp8kyxy/content-(80).png" alt="thunder 16 tiros" class="card-img" loading="lazy">
+      <h3>Thunder 16 tiros</h3>
+      <div class="precio">$22.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Thunder 16 tiros', 22900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/L4z9Bb6Q/content-(81).png" alt="amanecer estruendo 16 tiros" class="card-img" loading="lazy">
+      <h3>Amanecer Estruendo 16 tiros</h3>
+      <div class="precio">$13.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Amanecer Estruendo 16 tiros', 13900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/sfpj9ND6/content-(82).png" alt="minotauro 25 tiros" class="card-img" loading="lazy">
+      <h3>Minotauro 25 tiros</h3>
+      <div class="precio">$57.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Minotauro 25 tiros', 57900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/bYQyHBN3/content-(83).png" alt="coliseo 12 tiros" class="card-img" loading="lazy">
+      <h3>Coliseo 12 tiros</h3>
+      <div class="precio">$18.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Coliseo 12 tiros', 18500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/dQ8smxt5/content-(84).png" alt="glaciar 12 tiros" class="card-img" loading="lazy">
+      <h3>Glaciar 12 tiros</h3>
+      <div class="precio">$28.800</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Glaciar 12 tiros', 28800)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/zDnzScX7/content-(85).png" alt="show variedades del 2000 16 tiros" class="card-img" loading="lazy">
+      <h3>Show Variedades del 2000 16 tiros</h3>
+      <div class="precio">$24.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Show Variedades del 2000 16 tiros', 24500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/9XGmtnFt/content-(86).png" alt="paraiso 16 tiros" class="card-img" loading="lazy">
+      <h3>Paraíso 16 tiros</h3>
+      <div class="precio">$24.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Paraíso 16 tiros', 24500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/v8WYLNHW/content-(90).png" alt="paris 10 tiros" class="card-img" loading="lazy">
+      <h3>Paris 10 tiros</h3>
+      <div class="precio">$25.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Paris 10 tiros', 25500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/bYQyHBNx/content-(88).png" alt="mandala max 12 tiros" class="card-img" loading="lazy">
+      <h3>Mandala Max 12 tiros</h3>
+      <div class="precio">$12.800</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mandala Max 12 tiros', 12800)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/8khpB0PL/content-(89).png" alt="mandala variedad 7 tiros" class="card-img" loading="lazy">
+      <h3>Mandala Variedad 7 tiros</h3>
+      <div class="precio">$14.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mandala Variedad 7 tiros', 14500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/v8WYLNHW/content-(90).png" alt="amanecer variedad 9 tiros" class="card-img" loading="lazy">
+      <h3>Amanecer Variedad 9 tiros</h3>
+      <div class="precio">$14.600</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Amanecer Variedad 9 tiros', 14600)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/HWQY4hsM/content-(91).png" alt="paraiso 10 tiros 1" class="card-img" loading="lazy">
+      <h3>Paraíso 10 tiros 1</h3>
+      <div class="precio">$27.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Paraíso 10 tiros 1', 27000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/8khpB0PW/content-(92).png" alt="ultra laser" class="card-img" loading="lazy">
+      <h3>Ultra Laser</h3>
+      <div class="precio">$480.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Ultra Laser', 480000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/gcvzqTkZ/content-(93).png" alt="mini show max 100 tiros" class="card-img" loading="lazy">
+      <h3>Mini Show Max 100 tiros</h3>
+      <div class="precio">$165.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mini Show Max 100 tiros', 165000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/WpMN6Hbq/content-(94).png" alt="dubai 100 tiros" class="card-img" loading="lazy">
+      <h3>Dubai 100 tiros</h3>
+      <div class="precio">$165.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Dubai 100 tiros', 165000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/FFjrgBsf/content-(95).png" alt="torta turbo" class="card-img" loading="lazy">
+      <h3>Torta Turbo</h3>
+      <div class="precio">$480.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta Turbo', 480000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/Y21rfsqv/content-(96).png" alt="noche de fantasia 36 tiros" class="card-img" loading="lazy">
+      <h3>Noche de Fantasía 36 tiros</h3>
+      <div class="precio">$58.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Noche de Fantasía 36 tiros', 58500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/2j4kFK83/content-(97).png" alt="neutronium 44 tiros" class="card-img" loading="lazy">
+      <h3>Neutronium 44 tiros</h3>
+      <div class="precio">$129.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Neutronium 44 tiros', 129000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/T2rdq4Y1/content-(98).png" alt="super electra 49 tiros" class="card-img" loading="lazy">
+      <h3>Super Electra 49 tiros</h3>
+      <div class="precio">$200.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Super Electra 49 tiros', 200000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/PfmXzRrq/content-(99).png" alt="espacios amplios 25 tiros" class="card-img" loading="lazy">
+      <h3>Espacios Amplios 25 tiros</h3>
+      <div class="precio">$550.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Espacios Amplios 25 tiros', 550000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/gjqGznTW/content-(100).png" alt="mr. hyde" class="card-img" loading="lazy">
+      <h3>Mr. Hyde</h3>
+      <div class="precio">$500.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mr. Hyde', 500000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/ZnFJbCMm/content-101-2026-01-16T150029-192.png" alt="corona de fuego" class="card-img" loading="lazy">
+      <h3>Corona de Fuego</h3>
+      <div class="precio">$250.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Corona de Fuego', 250000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/qqXpJz5d/content-102-2026-01-16T150121-662.png" alt="circus 148 tiros" class="card-img" loading="lazy">
+      <h3>Circus 148 tiros</h3>
+      <div class="precio">$305.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Circus 148 tiros', 305000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/vTLGYcNw/content-103-2026-01-16T150130-589.png" alt="carnaval carioca 19 tiros" class="card-img" loading="lazy">
+      <h3>Carnaval Carioca 19 tiros</h3>
+      <div class="precio">$250.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Carnaval Carioca 19 tiros', 250000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/brHqysF7/content-104-2026-01-16T150414-046.png" alt="torta lord william 342 tiros" class="card-img" loading="lazy">
+      <h3>Torta Lord William 342 tiros</h3>
+      <div class="precio">$950.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta Lord William 342 tiros', 950000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/gjqGznB1/content-105-2026-01-16T150423-814.png" alt="caligula 19 tiros" class="card-img" loading="lazy">
+      <h3>Calígula 19 tiros</h3>
+      <div class="precio">$49.700</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Calígula 19 tiros', 49700)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/cCMdxr52/content-106-2026-01-16T150439-220.png" alt="escalera al cielo 168 tiros" class="card-img" loading="lazy">
+      <h3>Escalera al Cielo 168 tiros</h3>
+      <div class="precio">$500.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Escalera al Cielo 168 tiros', 500000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/D0d7v8YD/content-107-2026-01-16T150449-972.png" alt="abracadabra 200 tiros" class="card-img" loading="lazy">
+      <h3>Abracadabra 200 tiros</h3>
+      <div class="precio">$425.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Abracadabra 200 tiros', 425000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/tJt9qYmr/content-108-2026-01-16T150459-420.png" alt="volcan con misiles 13 tiros" class="card-img" loading="lazy">
+      <h3>Volcán con Misiles 13 tiros</h3>
+      <p>25500 x 6 unidades o 6000 x 1 unidad</p>
+      <div class="precio">$25.500 / $6.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Volcán con Misiles 13 tiros', 25500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/cCMdxr5b/content-109-2026-01-16T150509-347.png" alt="tortas retro 16 tiros" class="card-img" loading="lazy">
+      <h3>Tortas Retro 16 tiros</h3>
+      <div class="precio">$42.900</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Tortas Retro 16 tiros', 42900)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/5yqf46k7/content-110-2026-01-16T150517-947.png" alt="dragon 49 tiros" class="card-img" loading="lazy">
+      <h3>Dragón 49 tiros</h3>
+      <div class="precio">$190.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Dragón 49 tiros', 190000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/gjqGznBq/content-111-2026-01-16T150531-274.png" alt="gualeguaychu 49 tiros" class="card-img" loading="lazy">
+      <h3>Gualeguaychú 49 tiros</h3>
+      <div class="precio">$64.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Gualeguaychú 49 tiros', 64000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/RhQvSNbL/content-112-2026-01-16T150545-289.png" alt="fon d oro 65 tiros" class="card-img" loading="lazy">
+      <h3>Fon d Oro 65 tiros</h3>
+      <div class="precio">$85.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Fon d Oro 65 tiros', 85000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/fyjMzJg7/content-113-2026-01-16T150600-553.png" alt="4 estaciones 19 tiros" class="card-img" loading="lazy">
+      <h3>4 Estaciones 19 tiros</h3>
+      <div class="precio">$64.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('4 Estaciones 19 tiros', 64000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/GtJbLHSk/content-114-2026-01-16T150610-017.png" alt="norteño 49 tiros" class="card-img" loading="lazy">
+      <h3>Norteño 49 tiros</h3>
+      <div class="precio">$66.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Norteño 49 tiros', 66000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/wMc9q7bN/content-115-2026-01-16T150620-047.png" alt="show winner 300 tiros" class="card-img" loading="lazy">
+      <h3>Show Winner 300 tiros</h3>
+      <div class="precio">$380.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Show Winner 300 tiros', 380000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/3NC38dbv/content-116-2026-01-16T150846-377.png" alt="12 tiros peony trazante" class="card-img" loading="lazy">
+      <h3>12 tiros Peony Trazante</h3>
+      <div class="precio">$22.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('12 tiros Peony Trazante', 22000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/FzQ9XjGp/content-117-2026-01-16T150853-825.png" alt="12 tiros titanio trazante" class="card-img" loading="lazy">
+      <h3>12 tiros Titanio Trazante</h3>
+      <div class="precio">$22.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('12 tiros Titanio Trazante', 22000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/rsL82SgJ/content-118-2026-01-16T150901-793.png" alt="25 tiros crisantelmo" class="card-img" loading="lazy">
+      <h3>25 tiros Crisantelmo</h3>
+      <div class="precio">$37.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('25 tiros Crisantelmo', 37500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/KjyZhnQD/content-119-2026-01-16T150937-479.png" alt="25 tiros crisantelmo" class="card-img" loading="lazy">
+      <h3>25 tiros Crisantelmo (variante)</h3>
+      <div class="precio">$37.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('25 tiros Crisantelmo (variante)', 37500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/MH8WJyt0/content-120-2026-01-16T150945-502.png" alt="36 tiros crossete" class="card-img" loading="lazy">
+      <h3>36 tiros Crossette</h3>
+      <div class="precio">$52.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('36 tiros Crossette', 52000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/3NHKQg9Z/content-121-2026-01-16T150959-678.png" alt="49 tiros glitting y cracker" class="card-img" loading="lazy">
+      <h3>49 tiros Glitting y Cracker</h3>
+      <div class="precio">$65.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('49 tiros Glitting y Cracker', 65000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/FzQ9XjGj/content-122-2026-01-16T151008-101.png" alt="gran dario 150 tiros" class="card-img" loading="lazy">
+      <h3>Gran Darío 150 tiros</h3>
+      <div class="precio">$430.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Gran Darío 150 tiros', 430000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/fyhwQx59/content-123-2026-01-16T151015-565.png" alt="buterflier 300 tiros" class="card-img" loading="lazy">
+      <h3>Butterflier 300 tiros</h3>
+      <div class="precio">$425.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Butterflier 300 tiros', 425000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/QxmjvK7r/content-124-2026-01-16T151025-564.png" alt="torta profesional 150 tiros" class="card-img" loading="lazy">
+      <h3>Torta Profesional 150 tiros</h3>
+      <div class="precio">$425.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Torta Profesional 150 tiros', 425000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/GhdcMx4h/content-125-2026-01-16T151034-604.png" alt="show infinitum 300 tiros" class="card-img" loading="lazy">
+      <h3>Show Infinitum 300 tiros</h3>
+      <div class="precio">$425.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Show Infinitum 300 tiros', 425000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/J4M1T5sr/content-126-2026-01-16T151046-267.png" alt="gran final" class="card-img" loading="lazy">
+      <h3>Gran Final</h3>
+      <div class="precio">$255.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Gran Final', 255000)">Comprar</button>
+    </div>
+  </div>
+</section><!-- NUEVA SECCIÓN: PET FRIENDLY -->
+<section id="pet-friendly">
+  <h2>Pet Friendly</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.postimg.cc/T2nxDdVh/content-1-2026-01-16T192627-557.png" alt="mi mascota 24 tiros" class="card-img" loading="lazy">
+      <h3>Mi Mascota 24 tiros</h3>
+      <div class="precio">$30.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Mi Mascota 24 tiros', 30000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/wxDzmqX7/content-2-2026-01-16T192635-276.png" alt="magma 25 tiros" class="card-img" loading="lazy">
+      <h3>Magma 25 tiros</h3>
+      <div class="precio">$42.700</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Magma 25 tiros', 42700)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/ry5TrV1m/content-3-2026-01-16T192643-540.png" alt="norteño 49 tiros pet" class="card-img" loading="lazy">
+      <h3>Norteño 49 tiros Pet</h3>
+      <div class="precio">$67.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Norteño 49 tiros Pet', 67000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/tRFbxq3C/content-4-2026-01-16T192655-220.png" alt="trazo de plata" class="card-img" loading="lazy">
+      <h3>Trazos de Plata</h3>
+      <div class="precio">$58.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Trazos de Plata', 58000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/9Xy27mdX/content-5-2026-01-16T192703-915.png" alt="carnaval veracruz 600 t" class="card-img" loading="lazy">
+      <h3>Carnaval Veracruz 600 tiros</h3>
+      <div class="precio">$85.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Carnaval Veracruz 600 tiros', 85000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/8kLG6pRz/content-6-2026-01-16T192713-571.png" alt="carnaval rio 328 t" class="card-img" loading="lazy">
+      <h3>Carnaval Río 328 tiros</h3>
+      <div class="precio">$70.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Carnaval Río 328 tiros', 70000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/J7j8krN1/content-7-2026-01-16T192722-602.png" alt="show 48 perlas" class="card-img" loading="lazy">
+      <h3>Show 48 perlas</h3>
+      <div class="precio">$4.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Show 48 perlas', 4000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/nVqxDF4b/content-8-2026-01-16T192731-035.png" alt="show 96 perlas" class="card-img" loading="lazy">
+      <h3>Show 96 perlas</h3>
+      <div class="precio">$7.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Show 96 perlas', 7500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/7PS42H3J/content-9-2026-01-16T192740-042.png" alt="espectaculo 19 tiros coconut" class="card-img" loading="lazy">
+      <h3>Espectáculo 19 tiros Coconut</h3>
+      <div class="precio">$36.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Espectáculo 19 tiros Coconut', 36000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/gc3pZzVX/content-10-2026-01-16T192748-201.png" alt="crackling 16 tiros" class="card-img" loading="lazy">
+      <h3>Crackling 16 tiros</h3>
+      <div class="precio">$22.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Crackling 16 tiros', 22500)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/dQGFys27/content-11-2026-01-16T193437-382.png" alt="crackling 25 tiros" class="card-img" loading="lazy">
+      <h3>Crackling 25 tiros</h3>
+      <div class="precio">$26.000</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Crackling 25 tiros', 26000)">Comprar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.postimg.cc/zDTNgzCy/content-12-2026-01-16T193444-950.png" alt="crackling 37 tiros" class="card-img" loading="lazy">
+      <h3>Crackling 37 tiros</h3>
+      <div class="precio">$34.500</div>
+      <button type="button" class="btn-comprar" onclick="mostrarModalCantidad('Crackling 37 tiros', 34500)">Comprar</button>
+    </div>
+  </div>
+</section>
 </div>
 <!-- Apartado Información -->
 <section id="info">
@@ -1066,7 +1829,6 @@ function mostrarModalCantidad(nombre, precio) {
 function confirmarCantidad() {
   const input = document.getElementById('cantidadInput');
   let cantidad = parseInt(input.value);
- 
   if (isNaN(cantidad) || cantidad <= 0) {
     alert("Cantidad no válida. Debe ser un número mayor a 0.");
     return;
@@ -1078,17 +1840,14 @@ function confirmarCantidad() {
   } else {
     cart.push({ name: productoActual, price: precioActual, quantity: cantidad });
   }
- 
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
-
   // === NUEVO === Mostrar mensaje "Agregado al carrito!" por 5 segundos
   const toast = document.getElementById('toast');
   toast.classList.add('show');
   setTimeout(() => {
     toast.classList.remove('show');
   }, 5000);
- 
   // Cerrar modal directamente (sin mensaje)
   document.getElementById('cantidadModal').style.display = 'none';
 }
